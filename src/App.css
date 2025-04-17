@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import 'react-image-lightbox/style.css';
+
+
+
+@layer base {
+  /* Default light mode styles */
+
+
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: white;
+      color: black;
+    }
+  }
+  .dark body {
+    background-color: #1a202c;
+    color: white;
+  }
+}
