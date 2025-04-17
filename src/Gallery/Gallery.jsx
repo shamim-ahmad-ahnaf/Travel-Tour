@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
 const allImages = [
     {
       url: "https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=600",
