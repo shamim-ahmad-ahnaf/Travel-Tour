@@ -8,6 +8,7 @@ import Testimonials from './components/Testimonials'
 import Contact from './Contact/Contact'
 import CourseSection from './CourseSection/Course'
 import DarkModeToggle from './DarkModeToggle/DarkModeToggle'
+import Faq from './Faq/Faq'
 import FAQ from './Faq/Faq'
 import Gallery from './Gallery/Gallery'
 import Navbar from './Navbar/Navbar'
@@ -40,7 +41,7 @@ function App() {
         <Pricing />
         <Team />
         <BlogSection />
-        <FAQ />
+        <Faq />
         <div id="contact" className=" scroll-smooth">
           <Contact />
         </div>

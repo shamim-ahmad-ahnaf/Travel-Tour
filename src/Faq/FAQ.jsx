@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FAQ = () => {
+const Faq = () => {
   const faqs = [
     {
       question: "What documents do I need to travel?",
@@ -48,4 +48,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;
