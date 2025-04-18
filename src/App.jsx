@@ -8,11 +8,11 @@ import Testimonials from './components/Testimonials'
 import Contact from './Contact/Contact'
 import CourseSection from './CourseSection/Course'
 import DarkModeToggle from './DarkModeToggle/DarkModeToggle'
-import Faq from './Faq/Faq'
 import Gallery from './Gallery/Gallery'
 import Navbar from './Navbar/Navbar'
 import Newsletter from './Newsletter/Newsletter'
 import Pricing from './Pricing/Pricing'
+import QuestionAnswer from './QuestionAnswer/QuestionAnswer'
 import ScrollToTop from './ScrollToTop/ScrollToTop'
 import Team from './Team/Team'
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="pt-20">
+      <div className="">
         <div id="home" className=" scroll-smooth">
           <HeroSection />
         </div>
@@ -40,7 +40,7 @@ function App() {
         <Pricing />
         <Team />
         <BlogSection />
-        <Faq />
+        <QuestionAnswer />
         <div id="contact" className=" scroll-smooth">
           <Contact />
         </div>
