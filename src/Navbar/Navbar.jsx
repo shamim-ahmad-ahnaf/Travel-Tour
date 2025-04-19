@@ -25,10 +25,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="shadow-lg fixed top-0 left-0 w-full z-50 ">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 z-50 w-full shadow-lg backdrop-blur-md">
+      <div className="flex items-center justify-between max-w-6xl px-4 py-4 mx-auto">
         {/* Logo */}
-        <h1 className="text-3xl md:text-4xl font-bold text-yellow-500 tracking-wide">
+        <h1 className="text-3xl font-bold tracking-wide text-yellow-500 md:text-4xl">
           Travel<span className="">Pro</span>
         </h1>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
-            className="hover:text-yellow-500 transition"
+            className="transition hover:text-yellow-500"
           >
             {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
           </button>
@@ -55,7 +55,7 @@ const Navbar = () => {
               <a
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2  hover:text-yellow-500 transition duration-200"
+                className="flex items-center gap-2 transition duration-200 hover:text-yellow-500"
               >
                 <span className="text-lg">{link.icon}</span>
                 {link.name}

@@ -32,9 +32,9 @@ function App() {
         <div id="about" className=" scroll-smooth">
           <About />
         </div>
-       <div id="courses" className=" scroll-smooth">
-       <CourseSection />
-       </div>
+        <div id="courses" className=" scroll-smooth">
+          <CourseSection />
+        </div>
         <Gallery />
         <Testimonials />
         <Pricing />
