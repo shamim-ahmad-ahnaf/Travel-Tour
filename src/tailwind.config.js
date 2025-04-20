@@ -1,12 +1,25 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: 'class', // 'class' ব্যবহার করা হচ্ছে যাতে ডার্ক মোড কেবল তখনই অ্যাপ্লাই হয় যখন একটি নির্দিষ্ট ক্লাস ব্যবহার করা হবে।
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-      extend: {},
+  darkMode: 'class', // Enable dark mode via 'class'
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 0.3s ease-out forwards',
+      },
     },
-    plugins: [],
-  }
+  },
   
+  plugins: [
+    require('tailwind-scrollbar'), // Custom scrollbar plugin
+  ],
+}

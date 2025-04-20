@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { FaCheckCircle } from "react-icons/fa";
 
 const Pricing = () => {
+  const [currentStep, setCurrentStep] = useState(1); 
+
   const packages = [
     {
       name: "Basic",
@@ -25,7 +27,7 @@ const Pricing = () => {
   ];
 
   const handleChoosePlan = async (planName, price) => {
-    const result = await Swal.fire({
+    const step1 = await Swal.fire({
       title: `
         <h2 class="text-2xl font-semibold text-amber-500 mb-2">
           Book <span class="text-gray-800">${planName}</span> Plan
@@ -62,9 +64,8 @@ const Pricing = () => {
         return { name, email, phone, address };
       },
     });
-    
-    
-    if (result.isConfirmed && result.value) {
+
+    if (step1.isConfirmed && step1.value) {
       const paymentResult = await Swal.fire({
         title: "Choose Payment Method",
         text: `Total Amount: ${price}`,
@@ -78,7 +79,7 @@ const Pricing = () => {
         denyButtonColor: "#2563eb",
         cancelButtonColor: "#d33",
       });
-  
+
       if (paymentResult.isConfirmed) {
         const cardDetails = await Swal.fire({
           title: "Enter Credit Card Details",
@@ -105,11 +106,12 @@ const Pricing = () => {
             return { cardNumber, expiry, cvv };
           },
         });
-  
+
         if (cardDetails.isConfirmed) {
           Swal.fire("Payment Successful!", "Your booking is confirmed.", "success");
         } else if (cardDetails.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire("Payment Cancelled", "You cancelled the payment process.", "info");
+          setCurrentStep(1); 
+          Swal.fire("Cancelled", "You cancelled the payment.", "info");
         }
   
       } else if (paymentResult.isDenied) {
@@ -136,17 +138,16 @@ const Pricing = () => {
         if (mobileResult.isConfirmed && mobileResult.value) {
           Swal.fire(`Paid via ${mobileResult.value.toUpperCase()}!`, "Your booking is confirmed.", "success");
         } else if (mobileResult.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire("Payment Cancelled", "You didn't complete the payment.", "info");
+          setCurrentStep(1); 
+          Swal.fire("Cancelled", "You didn't complete the payment.", "info");
         }
-  
       } else if (paymentResult.dismiss === Swal.DismissReason.cancel) {
         Swal.fire("Payment Cancelled", "You didn't complete the payment.", "info");
       }
-    } else if (result.dismiss === Swal.DismissReason.cancel) {
+    } else if (step1.dismiss === Swal.DismissReason.cancel) {
       Swal.fire("Booking Cancelled", "You cancelled the booking process.", "info");
     }
   };
-  
 
   return (
     <section className="py-16" id="pricing">
@@ -158,17 +159,11 @@ const Pricing = () => {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`rounded-xl p-6 text-center transition shadow-md hover:shadow-xl ${
-                pkg.popular
-                  ? "border-4 border-yellow-500 scale-105 bg-yellow-50"
-                  : "border border-amber-400"
-              }`}
+              className={`rounded-xl p-6 text-center transition shadow-md hover:shadow-xl ${pkg.popular ? "border-4 border-yellow-500 scale-105 bg-yellow-50" : "border border-amber-400"}`}
             >
               {pkg.popular && (
                 <div className="mb-2">
-                  <span className="text-sm font-semibold text-yellow-600 uppercase">
-                    Most Popular
-                  </span>
+                  <span className="text-sm font-semibold text-yellow-600 uppercase">Most Popular</span>
                 </div>
               )}
               <h3 className="mb-2 text-2xl font-semibold">{pkg.name}</h3>
